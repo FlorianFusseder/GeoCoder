@@ -18,12 +18,12 @@ def main():
 	
 	for i in range(1, 6):
 		pathSimple = "D:/Spatial/Data/CSV/Rental_Data/CSV/simple/b" + str(i) + "_condo_comp012816.txt"
-		pathReworked = "D:/Spatial/Data/CSV/Rental_Data/CSV/reworked/b" + str(i) + "_reworked.txt"
+		pathReworked = "D:/Spatial/Data/CSV/Rental_Data/CSV/reworked_mapbox/b" + str(i) + "_reworked.txt"
 		with open(pathSimple, 'r') as old_file:
 			with open(pathReworked, 'w') as new_file:
 				for line in old_file:
 					temp = line.split("\t")
-					temp = temp[0] + ", " + temp[1] + ", NY"
+					temp = temp[0] + ", " + " New York"
 					response = geocoder.forward(temp, lon=-73.935242, lat=40.730610)
 					first = response.geojson()['features'][0]
 					if response.status_code == 200:
